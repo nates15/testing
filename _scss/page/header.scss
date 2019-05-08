@@ -1,0 +1,157 @@
+.page-header {
+    position: relative;
+    z-index: 1;
+
+    padding: 0;
+    padding-top: 72px;
+    padding-bottom: 96px;
+
+    text-align: center;
+
+    background: none;
+    background-color: $header-bg-color;
+
+    @media (max-width: $medium-breakpoint) {
+        padding-top: 72px;
+        padding-bottom: 60px;
+    }
+
+    .background {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+
+        overflow: hidden;
+
+        opacity: 0;
+
+@include header-background;
+    }
+
+    .project-name,
+    .project-tagline {
+        position: relative;
+        z-index: 2;
+
+        color: $header-heading-color;
+    }
+
+    .project-name {
+        margin-bottom: 0;
+
+        opacity: 1;
+
+@include font-title;
+
+        @media (max-width: $large-breakpoint) {
+            font-size: 4.5rem;
+        }
+
+        @media (max-width: $medium-breakpoint) {
+            font-size: 3.5rem;
+        }
+
+        @media (max-width: $small-breakpoint) {
+            font-size: 2.5rem;
+        }
+
+        @media (max-width: $tiny-breakpoint) {
+            font-size: 2.0rem;
+        }
+    }
+
+    .project-tagline {
+        opacity: 0.9;
+
+@include font-subtitle;
+
+        @media (max-width: $medium-breakpoint) {
+            font-size: 1rem;
+        }
+    }
+}
+
+.page-tabs {
+    position: absolute;
+    z-index: 1;
+
+    width: 100%;
+
+    transform: translateZ(0);
+
+    background-color: $background-color-alt;
+
+@include header-shadow-page;
+
+    .page-tabs-inner {
+        display: table;
+
+        height: $tabs-height;
+        margin: auto;
+
+        transition: height 0.15s $m-ease;
+        text-align: center;
+    }
+
+    &.fixed {
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        right: 0;
+        top: 0;
+
+@include header-shadow-fixed;
+
+        .page-tabs-inner {
+            height: $tabs-height-small;
+        }
+    }
+
+    a {
+        position: relative;
+        z-index: 2;
+
+        display: table-cell;
+
+        margin: 0;
+        padding: 0 1rem;
+
+        transition: background-color 0.1s $m-ease, color 0.1s $m-ease;
+        text-align: center;
+        vertical-align: middle;
+        text-decoration: none;
+
+        font-weight: 400;
+
+        @media (min-width: $tiny-breakpoint) {
+            min-width: 100px;
+        }
+
+        @media (min-width: $small-breakpoint) {
+            min-width: 150px;
+        }
+
+        @media (min-width: $medium-breakpoint) {
+            min-width: 200px;
+        }
+
+        &::before {
+            position: absolute;
+            z-index: -1;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+
+            content: "";
+            transition: transform 0.1s $m-ease;
+            transform: scaleY(0);
+            transform-origin: 50% 100%;
+
+            border-radius: 0;
+            background-color: $background-color;
+        }
+    }
+}

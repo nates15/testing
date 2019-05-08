@@ -1,0 +1,227 @@
+@keyframes loading-stat {
+    0% {
+        transform: translateX(-12px) translateY(0);
+    }
+
+    33% {
+        transform: translateX(12px) translateY(0);
+    }
+
+    67% {
+        transform: translateX(0px) translateY(-12px);
+    }
+
+    100% {
+        transform: translateX(-12px) translateY(0);
+    }
+}
+
+@keyframes loading-stat-line {
+    0% {
+        transform: translateX(0) translateY(0);
+    }
+
+    50% {
+        transform: translateX(0) translateY(-8px);
+    }
+
+    100% {
+        transform: translateX(0) translateY(0);
+    }
+}
+
+.stat-table {
+    position: relative;
+
+    width: 100%;
+    margin-top: 2em;
+    margin-bottom: 0.4em;
+
+    border-top: 1px solid $table-border-color;
+    border-bottom: 1px solid $table-border-color;
+    background: linear-gradient(90deg,
+    $background-color 0%,
+    $foreground-color 10%,
+    $foreground-color 90%,
+    $background-color 100%
+    );
+
+    &.stat-table-small {
+        display: none;
+
+        td {
+            width: 50%;
+        }
+    }
+
+    &.stat-table-large {
+        display: table;
+
+        td {
+            width: 8em;
+        }
+
+        .stat-counter {
+            width: 6em;
+        }
+    }
+
+    &.stat-table-single {
+        display: table;
+
+        td {
+            width: 50%;
+        }
+    }
+
+    @media screen and (max-width: $large-breakpoint) {
+        &.stat-table-small {
+            display: table;
+        }
+
+        &.stat-table-large {
+            display: none;
+        }
+    }
+
+    tr {
+        border-top: 1px solid $border-color;
+
+        &:first-child {
+            border: none;
+        }
+
+        td {
+            text-align: right;
+
+            border: 0;
+        }
+
+        .stat-counter {
+            transition: opacity 0.1s $m-ease;
+            text-align: left;
+
+            border-left: 1px solid $border-color;
+
+@include font-stat;
+
+            &.hidden {
+                opacity: 0;
+            }
+
+            &.loading {
+                animation-name: loading-stat-line;
+                animation-duration: 0.7s;
+                animation-timing-function: $m-ease-in-out;
+                animation-iteration-count: infinite;
+            }
+
+            &.stat-change-positive {
+                color: $color-positive;
+            }
+
+            &.stat-change-negative {
+                color: $color-negative;
+            }
+        }
+    }
+}
+
+.stat-count {
+    display: inline-block;
+
+    margin: 0 0.4em;
+    padding: 0.6em 1.8em;
+
+    text-align: center;
+
+    opacity: 1;
+    border-radius: $border-radius;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+
+    @media (max-width: $small-breakpoint) {
+        display: block;
+
+        margin: 0.8em 0;
+    }
+
+    // Sizes
+    &.stat-count-medium {
+        min-width: 10em;
+    }
+
+    &.stat-count-large {
+        min-width: 12em;
+    }
+
+    p {
+        margin: 0;
+        padding: 0;
+    }
+
+    p.stat-counter {
+        transition: opacity 0.2s $m-ease, transform 0.1s $m-ease;
+        transform: none;
+
+        font-size: 1.5em;
+
+@include font-stat;
+
+        &.hidden {
+            transform: scale(0.5);
+
+            opacity: 0;
+        }
+
+        &.loading {
+            animation-name: loading-stat;
+            animation-duration: 0.7s;
+            animation-timing-function: $m-ease-in-out;
+            animation-iteration-count: infinite;
+        }
+    }
+
+    // Colors
+    &.haiku-count {
+        color: $haiku-color-text;
+        background-color: $haiku-color;
+    }
+
+    &.server-count {
+        color: $text-color-alt;
+        background-color: $background-color-alt;
+    }
+
+    &.heart-count {
+        color: $heart-color-text;
+        background-color: $heart-color;
+    }
+
+    &.broken-heart-count {
+        color: $heart-color-light;
+        background-color: $heart-color-dark;
+    }
+
+    &.message-count {
+        color: $message-color-text;
+        background-color: $message-color;
+    }
+}
+
+.stat-graph {
+    margin-bottom: 2em;
+}
+
+.time {
+    font-family: "Roboto Mono", monospace;
+}
+
+
+.main-content .discord-bot-widget {
+    width: 100%;
+    height: 12rem;
+
+    border-radius: 4px;
+
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
+}

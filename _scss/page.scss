@@ -1,0 +1,48 @@
+@import "page/text";
+@import "page/content";
+@import "page/header";
+@import "page/panels";
+@import "page/color";
+@import "page/code";
+@import "page/anchors";
+@import "page/stats";
+
+@import "transitions";
+
+body {
+    overflow-x: hidden;
+    overflow-y: scroll;
+
+    margin: 0;
+    padding: 0;
+
+    transition: opacity 0.2s ease;
+
+    opacity: 1;
+    color: $text-color;
+    background-color: $background-color;
+
+    font-size: 1rem;
+
+@include font-body;
+}
+
+input,
+textarea,
+button,
+select,
+a {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+}
+
+img {
+    overflow: hidden;
+
+    opacity: 0;
+
+    &.visible {
+        transition: opacity 0.25s $m-ease;
+
+        opacity: 1;
+    }
+}

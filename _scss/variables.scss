@@ -1,0 +1,139 @@
+// Easings
+$m-ease: cubic-bezier(0.4, 0.0, 0.2, 1);
+$m-ease-in: cubic-bezier(0.4, 0.0, 1, 1);
+$m-ease-out: cubic-bezier(0.0, 0.0, 0.2, 1);
+$m-ease-in-out: cubic-bezier(0.4, 0.0, 0.6, 1);
+
+// Colors
+$primary-color: #f84655;
+$primary-color-alt: #ff7480;
+$secondary-color: #6478c9;
+$secondary-color-alt: #7287dd;
+$background-color: #f7f7f7;
+$background-color-alt: #2e2f34;
+$foreground-color: #fbfbfb;
+$text-color: rgba(0, 0, 0, 0.87);
+$text-color-detail: rgba(0, 0, 0, 0.6);
+$text-color-alt: rgba(255, 255, 255, 0.95);
+$text-color-dark: rgba(0, 0, 0, 0.87);
+$text-color-light: rgba(255, 255, 255, 0.95);
+// Site color
+$discord-color: #7287dd;
+$discord-background-color: #36393f;
+$patreon-color: #f96854;
+$patreon-color-background-1: #cc4433;
+$patreon-color-background-2: #cc2255;
+$modis-color: #0088ff;
+$modis-color-background-1: #0066bb;
+$modis-color-background-2: #00bb66;
+$kingdom-color: #1676d8;
+$haiku-color: #ffcc4d;
+$haiku-color-text: #643f00;
+$haiku-color-background-1: adjust-hue(#ffcc4d, 5deg);
+$haiku-color-background-2: adjust-hue(#ffcc4d, -15deg);
+$heart-color: #ff7a8e;
+$heart-color-dark: #4b141c;
+$heart-color-text: #6b242e;
+$heart-color-light: #ffc2cb;
+$message-color: #4da0ff;
+$message-color-text: #1c3655;
+// Patreon colors
+$patreon-color-red: #ff4d4d;
+$patreon-color-orange: #ff8b4d;
+$patreon-color-amber: #ffcc4d;
+$patreon-color-yellow: #fff04d;
+$patreon-color-lime: #baff4d;
+$patreon-color-green: #5bff4d;
+$patreon-color-aqua: #4dffa3;
+$patreon-color-cyan: #4dffff;
+$patreon-color-sky: #4dcfff;
+$patreon-color-ocean: #4d72ff;
+$patreon-color-indigo: #7f4dff;
+$patreon-color-purple: #c34dff;
+$patreon-color-magenta: #ff4dfc;
+$patreon-color-pink: #ff4db4;
+
+// Heading
+$header-heading-color: $text-color-alt;
+$header-bg-color: darken($background-color-alt, 7.5%);
+// Shadows
+@mixin header-shadow-page {
+    box-shadow: 0 -5px 5px rgba(0, 0 ,0, 0.15);
+}
+@mixin header-shadow-fixed {
+    box-shadow: none;
+}
+
+// Code
+$code-bg-color: rgba($secondary-color, 0.05);
+$code-border-color: rgba($secondary-color, 0.15);
+$code-text-color: $secondary-color;
+
+// Stat text
+$color-positive: #33b339;
+$color-negative: #b33c33;
+
+// Borders
+$border-color: rgba($background-color-alt, 0.15);
+$table-border-color: rgba($background-color-alt, 0.25);
+$hr-border-color: rgba($background-color-alt, 0.15);
+$border-radius: 1rem;
+
+// Fonts
+@import "fonts";
+
+// Breakpoints
+$large-breakpoint: 1200px;
+$medium-breakpoint: 800px;
+$small-breakpoint: 600px;
+$tiny-breakpoint: 400px;
+
+// Sizes
+$tabs-height: 48px;
+$tabs-height-small: 40px;
+// Buttons
+$button-inset: 3px;
+$button-extend: 2px;
+$button-extend-hover: 6px;
+$button-extend-active: 3px;
+@mixin button($color, $text-color, $dark-extend) {
+    color: $text-color;
+    background-color: $color;
+
+    @if ($dark-extend) {
+        background-color: darken($color, 20%);
+    } @else {
+        background-color: darken($color, 10%);
+    }
+
+    .button-inner {
+        display: block;
+
+        padding: 0.8rem 1.6rem;
+
+        content: "";
+        transition: transform 0.07s $m-ease;
+        transform: translateY(-$button-extend);
+
+        border-radius: $border-radius;
+        background-color: $color;
+    }
+
+    &:hover,
+    &:focus {
+        .button-inner {
+            transform: translateY(-$button-extend-hover);
+        }
+    }
+
+    &:active {
+        .button-inner {
+            transform: translateY(-$button-extend-active);
+        }
+    }
+}
+
+// Header
+@mixin header-background {
+    background-color: $background-color;
+}
